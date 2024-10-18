@@ -1,7 +1,11 @@
-import path from "path";
 import express from "express";
+import { getHtmlFilePath } from "../utils/function.js";
+
 export const clientRouter = express.Router();
 
 clientRouter.get("/", (req, res) => {
-  res.sendFile(path.join(import.meta.dirname, "../../public/landing.html"));
+  // Resolve the path to the landing.html file
+  const filePath = getHtmlFilePath("landing.html");
+
+  res.sendFile(filePath);
 });
