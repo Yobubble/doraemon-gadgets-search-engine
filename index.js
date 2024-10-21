@@ -7,6 +7,7 @@ const app = express();
 
 app.use("/", clientRouter);
 app.use("/api", serverRouter);
+app.use(express.static("public/images")); // [GF] serve static image
 
 app.listen(defaultPort, () => {
   console.log(`Example app listening on port ${defaultPort}`);
