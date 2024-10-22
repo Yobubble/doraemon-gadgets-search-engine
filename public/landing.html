@@ -18,14 +18,13 @@
       .container {
         text-align: center;
       }
-      h1 {
-        font-size: 2em;
-        margin-bottom: 20px;
-      }
       img {
         width: 200px;
         height: auto;
         margin-bottom: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
       }
       .search-bar {
         display: flex;
@@ -66,8 +65,13 @@
     <a href="/members"><button class="team-button">Team Member</button></a>
 
     <div class="container">
-      <h1>Doraemon's Gadgets Search Engine</h1>
-      <img src="doraemon1.jpg" alt="Doraemon" />
+      <h1 style="color: blue; font-weight: bold; font-size: larger">
+        Doraemon's Gadgets Search Engine
+      </h1>
+      <br />
+      <a href="https://doraemon.fandom.com/wiki/Doraemon"
+        ><img src="doraemon1.jpg" alt=""
+      /></a>
       <div class="search-bar">
         <input type="text" placeholder="Functionality or gadget’s name" />
       </div>
