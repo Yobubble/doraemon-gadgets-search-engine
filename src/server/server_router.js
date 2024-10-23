@@ -1,14 +1,19 @@
 import express from "express";
-import { connectionTestUrl, matchQueryUrl } from "../utils/constant.js";
+import { connectionTestUrl, matchQueryUrl } from "../constants/els_api_url.js";
+import {
+  connectionTestEndpoint,
+  queryEndpoint,
+  root,
+} from "../constants/main_api_endpoint.js";
 export const serverRouter = express.Router();
 
 // Root of server
-serverRouter.get("/", (req, res) => {
+serverRouter.get(root, (req, res) => {
   res.send("Hello from server from gadget route");
 });
 
 // Test connection with Elasticsearch
-serverRouter.get("/elastic", async (req, res) => {
+serverRouter.get(connectionTestEndpoint, async (req, res) => {
   const response = await fetch(connectionTestUrl, {
     method: "GET",
     headers: {
@@ -25,7 +30,7 @@ serverRouter.get("/elastic", async (req, res) => {
 // {
 //   "query_message" : "",
 // }
-serverRouter.post("/elastic/query", async (req, res) => {
+serverRouter.post(queryEndpoint, async (req, res) => {
   const body = req.body;
   const elsBody = {
     query: {
