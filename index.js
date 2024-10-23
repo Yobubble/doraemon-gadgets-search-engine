@@ -6,7 +6,7 @@ import { serverRouter } from "./src/server/server_router.js";
 const app = express();
 
 app.use(express.json());
-app.use(express.static("public/images")); // [GF] serve static image
+app.use(express.static("public")); // [GF] serve static image
 app.use("/", clientRouter);
 app.use("/api", serverRouter);
 
