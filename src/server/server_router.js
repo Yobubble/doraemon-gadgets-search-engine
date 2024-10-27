@@ -1,10 +1,13 @@
 import express from "express";
-import { connectionTestUrl, matchQueryUrl } from "../constants/els_api_url.js";
+import {
+  connectionTestUrl,
+  matchQueryUrl,
+} from "../utils/constants/els_api_url.js";
 import {
   connectionTestEndpoint,
   queryEndpoint,
   root,
-} from "../constants/main_api_endpoint.js";
+} from "../utils/constants/main_api_endpoint.js";
 export const serverRouter = express.Router();
 
 // Root of server
@@ -51,7 +54,10 @@ serverRouter.post(queryEndpoint, async (req, res) => {
   });
   const data = await response.json();
 
-  res.send(data);
+  res.send({
+    count: data.hits.total.value,
+    data: data.hits.hits,
+  });
 });
 
 // TODO: Analyzer Customization

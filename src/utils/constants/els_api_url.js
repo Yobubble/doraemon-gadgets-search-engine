@@ -1,4 +1,4 @@
-import { elasticsearchUrl } from "../../configs.js";
+import { elasticsearchUrl } from "../../../configs.js";
 
 // Server
 export const connectionTestUrl = elasticsearchUrl;
