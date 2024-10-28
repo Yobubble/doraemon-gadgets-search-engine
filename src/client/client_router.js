@@ -14,3 +14,9 @@ clientRouter.get("/members", (req, res) => {
   const filePath = getHtmlFilePath("member.html");
   res.sendFile(filePath);
 });
+
+clientRouter.get("/search", (req, res) => {
+  // Resolve the path to the search.html file
+  const filePath = getHtmlFilePath("search.html");
+  res.sendFile(filePath);
+});
