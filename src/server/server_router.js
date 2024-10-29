@@ -64,6 +64,7 @@ serverRouter.post(queryEndpoint, async (req, res) => {
 serverRouter.post(queryMockEndpoint, (req, res) => {
   const body = req.body;
   console.log("POST Body: ", body);
-  res.send(mock1);
+  //console.log(JSON.stringify(mock1));
+  res.send(JSON.stringify(mock1));
 });
 // TODO: Analyzer Customization
