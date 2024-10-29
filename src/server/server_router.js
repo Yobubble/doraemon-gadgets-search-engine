@@ -6,8 +6,10 @@ import {
 import {
   connectionTestEndpoint,
   queryEndpoint,
+  queryMockEndpoint,
   root,
 } from "../utils/constants/main_api_endpoint.js";
+import { mock1 } from "../utils/mock_data.js";
 export const serverRouter = express.Router();
 
 // Root of server
@@ -40,7 +42,6 @@ serverRouter.post(queryEndpoint, async (req, res) => {
       multi_match: {
         query: body.query_message,
         fields: ["description", "eng_name"],
-        // TODO: more configuration possible here
       },
     },
   };
@@ -60,4 +61,9 @@ serverRouter.post(queryEndpoint, async (req, res) => {
   });
 });
 
+serverRouter.post(queryMockEndpoint, (req, res) => {
+  const body = req.body;
+  console.log("POST Body: ", body);
+  res.send(mock1);
+});
 // TODO: Analyzer Customization
