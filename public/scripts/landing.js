@@ -1,8 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector(".search-bar");
+document.querySelector(".search-button").addEventListener("click", function () {
+  const searchMessage = document.querySelector(".searchBox").value;
+  console.log("Search term:", searchMessage);
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the default form submission behavior
-    console.log("Form submission prevented");
-  });
+  if (searchMessage == "") {
+    alert("Please enter term in the search box :)");
+  } else {
+    window.location.href = `search.html?query=${encodeURIComponent(
+      searchMessage
+    )}`;
+  }
 });

@@ -56,3 +56,19 @@ img {
   height: auto;
   display: block;
 }
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #00aaff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.back-button:hover {
+  background-color: #0088cc;
+}

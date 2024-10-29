@@ -1,3 +1,9 @@
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+console.log(getQueryParam("query"));
+
 fetch("http://localhost:3000/api/queryMock", {
   // TODO: [BIGBEE]: Change API URL to "http://localhost:3000/api/query"
   method: "POST",
@@ -5,7 +11,7 @@ fetch("http://localhost:3000/api/queryMock", {
     "Content-Type": "application/json",
   },
   body: JSON.stringify({
-    query_message: "Big Bee", // For test input search parameter
+    query_message: getQueryParam("query"),
   }),
 })
   .then((response) => response.json())

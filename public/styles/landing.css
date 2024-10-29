@@ -50,3 +50,16 @@ input[type="text"]:focus {
 .team-button:hover {
   background-color: #0088cc;
 }
+
+.search-button {
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-color: gray;
+}
+
+.search-button:hover {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: 5px 5px 25px #cfcfcf, -5px -5px 25px #ffffff;
+}
