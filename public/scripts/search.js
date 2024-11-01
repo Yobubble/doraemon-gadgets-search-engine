@@ -27,7 +27,8 @@ function populateCards(items) {
   items.forEach((item) => {
     const source = item._source || {};
 
-    const proxyUrl = "";
+    const proxyUrl = "http://localhost:3000/api/image-proxy?url=";
+    // const proxyUrl = "";
     const imageUrl = `${proxyUrl}${source.image_url}`;
 
     const cardHTML = `
