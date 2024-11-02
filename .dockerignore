@@ -3,4 +3,6 @@ node_modules
 docker
 package-lock.json
 gitignore
+deploy
+.env
 
