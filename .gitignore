@@ -8,3 +8,6 @@ package-lock.json
 # Elasticsearch volumes
 /docker/es01-data
 /docker/es02-data
+
+# environment
+.env
