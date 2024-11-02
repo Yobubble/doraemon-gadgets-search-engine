@@ -1,5 +1,4 @@
 import express from "express";
-import https from "https";
 import {
   connectionTestUrl,
   matchQueryUrl,
@@ -8,7 +7,6 @@ import {
   connectionTestEndpoint,
   queryEndpoint,
   queryMockEndpoint,
-  imageProxy,
   root,
 } from "../utils/constants/main_api_endpoint.js";
 import { mock1 } from "../utils/mock_data.js";
@@ -69,24 +67,5 @@ serverRouter.post(queryMockEndpoint, (req, res) => {
   //console.log(JSON.stringify(mock1));
   res.send(JSON.stringify(mock1));
 });
+
 // TODO: Analyzer Customization
-
-serverRouter.get(imageProxy, (req, res) => {
-  const imageUrl = req.query.url;
-  console.log("Requested image URL:", imageUrl); // Log the requested URL
-
-  https
-    .get(imageUrl, (response) => {
-      const contentType = response.headers["content-type"];
-      console.log("Content Type:", contentType); // Log the content type
-
-      res.set("Content-Type", contentType); // Set the correct content type
-
-      // Pipe the response directly to the client
-      response.pipe(res);
-    })
-    .on("error", (error) => {
-      console.error("Error fetching image:", error); // Log the error for debugging
-      res.status(500).send("Error fetching image");
-    });
-});
