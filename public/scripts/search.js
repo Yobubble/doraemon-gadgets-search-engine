@@ -34,7 +34,7 @@ function populateCards(items) {
     const cardHTML = `
       <div class="search-result">
         <div class="content">
-          <a href=${imageUrl} target="_blank">
+          <a href="https://doraemon.fandom.com/wiki/File:${imageUrl}" target="_blank">
           <p class="title" style="display: inline">${source.eng_name}</p>
           <p class="title" style="display: inline"> / ${source.jp_name}</p>
           </a>
