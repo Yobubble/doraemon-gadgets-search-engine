@@ -42,6 +42,9 @@ serverRouter.post(queryEndpoint, async (req, res) => {
       multi_match: {
         query: body.query_message,
         fields: ["description", "eng_name"],
+        fuzziness: "AUTO",
+        type: "best_fields",
+        operator: "or",
       },
     },
   };
