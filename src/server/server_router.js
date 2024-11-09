@@ -6,18 +6,14 @@ import {
 import {
   connectionTestEndpoint,
   queryEndpoint,
-  queryMockEndpoint,
   root,
 } from "../utils/constants/main_api_endpoint.js";
-import { mock1 } from "../utils/mock_data.js";
 export const serverRouter = express.Router();
 
-// Root of server
 serverRouter.get(root, (req, res) => {
   res.send("Hello from server from gadget route");
 });
 
-// Test connection with Elasticsearch
 serverRouter.get(connectionTestEndpoint, async (req, res) => {
   const response = await fetch(connectionTestUrl, {
     method: "GET",
@@ -30,11 +26,6 @@ serverRouter.get(connectionTestEndpoint, async (req, res) => {
   res.send(data);
 });
 
-// Find related documents
-// body
-// {
-//   "query_message" : "",
-// }
 serverRouter.post(queryEndpoint, async (req, res) => {
   const body = req.body;
   const elsBody = {
@@ -63,12 +54,3 @@ serverRouter.post(queryEndpoint, async (req, res) => {
     data: data.hits.hits,
   });
 });
-
-serverRouter.post(queryMockEndpoint, (req, res) => {
-  const body = req.body;
-  console.log("POST Body: ", body);
-  //console.log(JSON.stringify(mock1));
-  res.send(JSON.stringify(mock1));
-});
-
-// TODO: Analyzer Customization

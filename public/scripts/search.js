@@ -5,7 +5,6 @@ function getQueryParam(param) {
 console.log(getQueryParam("query"));
 
 fetch("http://localhost:3000/api/query", {
-  // TODO: [BIGBEE]: Change API URL to "http://localhost:3000/api/query"
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -23,18 +22,14 @@ fetch("http://localhost:3000/api/query", {
 function populateCards(items) {
   const container = document.querySelector(".returned-card");
   container.innerHTML = ""; // Clear existing content
-
+  console.log(items);
   items.forEach((item) => {
     const source = item._source || {};
-
-    const proxyUrl = ""; // nothing use because of it don't work, so sad.
-    // const proxyUrl = "";
-    const imageUrl = `${proxyUrl}${source.image_url}`;
-    console.log(imageUrl);
+    console.log(source.image_url);
     const cardHTML = `
       <div class="search-result">
         <div class="content">
-          <a href="https://doraemon.fandom.com/wiki/File:${imageUrl}" target="_blank">
+          <a href="https://doraemon.fandom.com/wiki/File:${source.image_url}" target="_blank">
           <p class="title" style="display: inline">${source.eng_name}</p>
           <p class="title" style="display: inline"> / ${source.jp_name}</p>
           </a>
