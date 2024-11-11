@@ -1,4 +1,4 @@
-document.querySelector(".search-button").addEventListener("click", function () {
+function doTheSearch(){
   const searchMessage = document.querySelector(".searchBox").value;
   console.log("Search term:", searchMessage);
 
@@ -8,5 +8,15 @@ document.querySelector(".search-button").addEventListener("click", function () {
     window.location.href = `search.html?query=${encodeURIComponent(
       searchMessage
     )}`;
+  }
+}
+
+document.querySelector(".search-button").addEventListener("click", function () {
+  doTheSearch();
+});
+
+document.querySelector(".searchBox").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    doTheSearch();
   }
 });

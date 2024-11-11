@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doraemon's Gadgets Search Engine</title>
     <link rel="stylesheet" href="styles/search.css" />
-    <script src="scripts/search.js"></script>
   </head>
   <body>
     <div class="container">
       <a href="/"><button class="back-button">Back</button></a>
       <h1>Doraemon's Gadgets Search Engine</h1>
+
+      <div class="search-container">
+        <input class="searchBox" type="text" placeholder="Functionality or gadget’s name">
+        <button type="button" class="search-button">Search</button>
+      </div>
+      <br>
 
       <div class="returned-card">
         <div class="search-result">
@@ -26,4 +31,5 @@
       </div>
     </div>
   </body>
+  <script src="scripts/search.js"></script>
 </html>
