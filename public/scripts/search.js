@@ -58,7 +58,7 @@ function populateCards(items) {
           <p class="title" style="display: inline"> / ${source.jp_name}</p>
           </a>
           <p class="description">${source.description}</p>
-          <p class="episode">Appears In: ${source.appears_in.join(", ")}</p>
+          <p class="episode"><b>Appears In: </b>${source.appears_in.join(", ")}</p>
         </div>
       </div>
     `;
