@@ -39,30 +39,63 @@ fetch("http://localhost:3000/api/query", {
 })
   .then((response) => response.json())
   .then((data) => {
-    populateCards(data.data);
+    populateCards(data.data, getQueryParam("query"));
   })
   .catch((error) => console.error("Error fetching data:", error));
 
-function populateCards(items) {
-  const container = document.querySelector(".returned-card");
-  container.innerHTML = ""; // Clear existing content
-  console.log(items);
-  items.forEach((item) => {
-    const source = item._source || {};
-    console.log(source.image_url);
-    const cardHTML = `
-      <div class="search-result">
-        <div class="content">
-          <a href="https://doraemon.fandom.com/wiki/File:${source.image_url}" target="_blank">
-          <p class="title" style="display: inline">${source.eng_name}</p>
-          <p class="title" style="display: inline"> / ${source.jp_name}</p>
-          </a>
-          <p class="description">${source.description}</p>
-          <p class="episode"><b>Appears In: </b>${source.appears_in.join(", ")}</p>
-        </div>
-      </div>
-    `;
+  function populateCards(items, queryMessage) {
+    const container = document.querySelector(".returned-card");
+    container.innerHTML = ""; // Clear existing content
+  
+    console.log("There are " + items.length + " result(s) returned.");
+    console.log(items);
 
-    container.innerHTML += cardHTML;
+    if(items.length == 0){
+      container.innerHTML = `<br><br><br><br><br><h2>No results found.</h2>`
+    }
+
+    else{
+    function highlightText(text) {
+      if (!queryMessage) return text;
+      const regex = new RegExp(`(${queryMessage})`, "gi");
+      return text.replace(regex, '<span class="highlight">$1</span>');
+    }
+  
+    items.forEach((item) => {
+      const source = item._source || {};
+      const highlightedDescription = highlightText(source.description);
+      const highlightedAppearsIn = source.appears_in
+      .map((appear) => highlightText(appear))
+      .join(", ");
+      
+      const cardHTML = `
+        <div class="search-result">
+          <div class="content">
+            <a href="https://doraemon.fandom.com/wiki/File:${source.image_url}" target="_blank">
+            <p class="title" style="display: inline">${source.eng_name}</p>
+            <p class="title" style="display: inline"> / ${source.jp_name}</p>
+            </a>
+            <p class="description">${highlightedDescription}</p>
+            <p class="episode"><b>Appears In:</b> ${highlightedAppearsIn}</p>
+          </div>
+        </div>
+      `;
+  
+      container.innerHTML += cardHTML;
+    });
+    }
+  }
+
+document.querySelector('.checkHighlight').addEventListener('change', function() {
+  const highlights = document.querySelectorAll('.highlight');
+  
+  const isChecked = this.checked;
+
+  highlights.forEach((highlight) => {
+    if (isChecked) {
+      highlight.style.backgroundColor = 'yellow'; 
+    } else {
+      highlight.style.backgroundColor = 'white'; 
+    }
   });
-}
+});

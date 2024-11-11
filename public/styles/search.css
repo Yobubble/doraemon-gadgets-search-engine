@@ -43,7 +43,7 @@ h1 {
 }
 .content .description {
   font-size: 14px;
-  color: black;
+  color: black
 }
 
 .content .episode {
@@ -98,4 +98,65 @@ img {
   border-radius: 0 4px 4px 0;
   cursor: pointer;
   outline: none;
+}
+
+
+.search-container .checkHighlight {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+  margin-right: 8px;
+}
+
+.search-container .checkHighlight:checked {
+  background-color: #4CAF50;
+  border-color: #4CAF50; 
+}
+
+.search-container .checkHighlight:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.search-container .labelCheck {
+  display: inline-flex;
+  align-items: center;
+  padding: 6.25px 12px;
+  font-size: 16px;
+  background-color: grey;
+  color: white;
+  border: 1px solid #ccc; /* Same border as the search button */
+  /* border-radius: 4px 0 0 5px; */
+  cursor: pointer;
+}
+
+.search-container .labelCheck:hover {
+  background-color: #45a049;
+}
+
+/* for highlight the query text */
+.highlight {
+  transition: background-color 0.3s; 
+}
+
+.highlight.checked {
+  background-color: yellow;
+}
+
+.highlight.unchecked {
+  background-color: white;
 }
