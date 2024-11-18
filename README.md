@@ -14,3 +14,4 @@
 ### About submission docs
 1. JSON Data: documents/ndjson2.json
 2. Report PDF: Project2_6588062_6588142_6588150.pdf
+2. Proposal slide(phase1): ProposalSlide.pdf
