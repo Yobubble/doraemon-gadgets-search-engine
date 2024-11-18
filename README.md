@@ -10,3 +10,7 @@
 6. Go to root of the repository and run the command`npm run dev`
 7. Open your browser and go to `http://localhost:3000`
 8. Enjoy!
+
+### About submission docs
+1. JSON Data: documents/ndjson2.json
+2. Report PDF: Project2_6588062_6588142_6588150.pdf
